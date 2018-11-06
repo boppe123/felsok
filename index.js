@@ -29,6 +29,14 @@ restService.post("/webhooktest", function(req, res) {
   }).catch(() => {
     //res.json({ 'fulfillmentText': 'something is wrong' });
   });
+  if (state == '0' && output == '0'){
+	    returnError().then((ret) => {
+    res.json({ 'fulfillmentText': ret }); // Return the results of the weather API to Dialogflow
+  }).catch(() => {
+    res.json({ 'fulfillmentText': 'something is wrong' });
+  });
+	 
+ }
  }
  
  
