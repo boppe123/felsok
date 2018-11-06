@@ -21,9 +21,11 @@ restService.post("/webhooktest", function(req, res) {
  let Unit = req.body.queryResult.parameters['Unit']; // take out the Unit, lamp e.g.
  let state = req.body.queryResult.parameters['state']; // take out the the state, on or off
  let cmd = req.body.queryResult.parameters['cmd'];
+ var temp;
  if (Unit == 'lamp'){
 	   callThingApi().then((output) => {
-    res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
+		   temp = output;
+    res.json({ 'fulfillmentText': temp }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     //res.json({ 'fulfillmentText': 'something is wrong' });
   });
