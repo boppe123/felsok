@@ -24,26 +24,13 @@ restService.post("/webhooktest", function(req, res) {
  var temp;
  if (Unit == 'lamp'){
 	   callThingApi().then((output) => {
-		   temp = output;
+		   //temp = output;
     res.json({ 'fulfillmentText': temp }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     //res.json({ 'fulfillmentText': 'something is wrong' });
   });
-  /*if (state == '0' && output == '0'){
-	  	    returnError().then((ret) => {
-    res.json({ 'fulfillmentText': ret }); // Return the results of the weather API to Dialogflow
-  }).catch(() => {
-    //res.json({ 'fulfillmentText': 'something is wrong' });
-  });
-  }*/
  }
- if (Unit == 'lamp' && state == 'on' && cmd == 'turn'){
-	 callThingApiON().then((output) => {
-    res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
-  }).catch(() => {
-    res.json({ 'fulfillmentText': 'something is wrong' });
-  });
- }
+
  else {
 	    returnError().then((ret) => {
     res.json({ 'fulfillmentText': ret }); // Return the results of the weather API to Dialogflow
