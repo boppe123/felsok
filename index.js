@@ -31,8 +31,8 @@ restService.post("/webhooktest", function(req, res) {
   });
   
   if (state == 'on' && temp == '1'){
-	  let stateon = 'The lamp is already on'
-	  res.json({ 'fulfillmentText': stateon });
+	let stateon = 'The lamp is already on';
+	return stateon;
   }
   
   
