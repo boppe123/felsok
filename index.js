@@ -30,7 +30,7 @@ restService.post("/webhooktest", function(req, res) {
     //res.json({ 'fulfillmentText': 'something is wrong' });
   });
   
-  if (state == 'on' && temp == '1'){
+  if (Unit == 'lamp' && state == 'on' && temp == '1'){
 	let stateon = 'The lamp is already on';
 	return stateon;
   }
