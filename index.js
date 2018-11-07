@@ -58,9 +58,7 @@ restService.post("/webhooktest", function(req, res) {
 	res.json({ 'fulfillmentText': 'The lamp is already off' });
  }
  }
- }
- 
-	else {
+ 	else {
 	returnError().then((ret) => {
     res.json({ 'fulfillmentText': ret }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
@@ -68,6 +66,8 @@ restService.post("/webhooktest", function(req, res) {
   });
 	 
  }
+ }
+
  
 });
 
