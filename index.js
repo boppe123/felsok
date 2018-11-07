@@ -27,16 +27,16 @@ restService.post("/webhooktest", function(req, res) {
  cmd = req.body.queryResult.parameters['cmd'];
  
  if (Unit == 'lamp'){
-	   callThingApi().then((output) => {
-		   temp = output;
+		callThingApi().then((output) => {
+		temp = output;
    // res.json({ 'fulfillmentText': temp });
   });
  
  if (state == 'on') {
 	if(temp == '1')
-	 res.json({ 'fulfillmentText': 'The lamp is already on' });
+	res.json({ 'fulfillmentText': 'The lamp is already on' });
  else {
-	 	 	 callThingApiON().then((output) => {
+	callThingApiON().then((output) => {
     res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     res.json({ 'fulfillmentText': 'something is wrong' });
@@ -44,10 +44,10 @@ restService.post("/webhooktest", function(req, res) {
  }
  }
  if(state == 'off') {
-	 if(temp == '0')
-		 res.json({ 'fulfillmentText': 'The lamp is already off' });
-	  else {
-	 	 	 callThingApiOFF().then((output) => {
+	if(temp == '0')
+	res.json({ 'fulfillmentText': 'The lamp is already off' });
+	else {
+	callThingApiOFF().then((output) => {
     res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     res.json({ 'fulfillmentText': 'something is wrong' });
@@ -55,8 +55,9 @@ restService.post("/webhooktest", function(req, res) {
  }
  }
  }
- else {
-	    returnError().then((ret) => {
+ 
+	else {
+	returnError().then((ret) => {
     res.json({ 'fulfillmentText': ret }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     res.json({ 'fulfillmentText': 'something is wrong' });
