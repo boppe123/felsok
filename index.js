@@ -33,7 +33,15 @@ restService.post("/webhooktest", function(req, res) {
   //}).catch(() => {
     //res.json({ 'fulfillmentText': 'something is wrong' });
   });
+ 
+ if (state == 'on' && temp == '1') {  
+	 res.json({ 'fulfillmentText': 'The lamp is already on' });
  }
+ if (state == 'off' && temp == '0'){
+	 res.json({ 'fulfillmentText': 'The lamp is already off' });
+ }
+ }
+ 
 });
 
  /*
