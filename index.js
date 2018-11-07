@@ -94,7 +94,7 @@ function callThingApi () {
     //let path = '/update?api_key=116UAXMQP1O8EYZ3&field1=1';
     // Make the HTTP request
 	
-    https.get('https://api.thingspeak.com/channels/592740/feeds.json?results=2', (res) => {
+    https.get('https://api.thingspeak.com/channels/592740/feeds.json?results=1', (res) => {
       let body = ''; // var to store the response chunks
       res.on('data', (d) => { body += d; }); // store each response chunk
       res.on('end', () => {
