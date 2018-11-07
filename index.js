@@ -34,6 +34,7 @@ restService.post("/webhooktest", function(req, res) {
  
  if (state == 'on') {
 	if(temp == '1'){
+		temp ='1';
 	res.json({ 'fulfillmentText': 'The lamp is already on' });
 	}
 	else {
@@ -46,6 +47,7 @@ restService.post("/webhooktest", function(req, res) {
  }
  if(state == 'off') {
 	if(temp == '0') {
+		temp = '0';
 	res.json({ 'fulfillmentText': 'The lamp is already off' });
 	}
 	else {
