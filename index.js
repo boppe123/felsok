@@ -31,11 +31,6 @@ restService.post("/webhooktest", function(req, res) {
 		temp = output;
    // res.json({ 'fulfillmentText': temp });
   });
-  
-  if (cmd == 'what') {
-	callThingApi().then((output) => {
-	res.json({ 'fulfillmentText': 'The lamp is' + output + ''});
-  }
  
  if (state == 'on') {
 	if(temp == '1')
