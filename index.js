@@ -32,25 +32,27 @@ restService.post("/webhooktest", function(req, res) {
    // res.json({ 'fulfillmentText': temp });
   });
  
- if (state == 'on' && temp == '1') {  
+ if (state == 'on') {
+	if(temp == '1')
 	 res.json({ 'fulfillmentText': 'The lamp is already on' });
- }
-  else if (state == 'off' && temp == '0'){
-	 res.json({ 'fulfillmentText': 'The lamp is already off' });
- }
-  else if(state == 'on' && temp == '0') {
-	 	 callThingApiON().then((output) => {
+ else {
+	 	 	 callThingApiON().then((output) => {
     res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     res.json({ 'fulfillmentText': 'something is wrong' });
   });
  }
- else if (state == 'off' && temp == '1'){
-	 	callThingApiOFF().then((output) => {
+ }
+ if(state == 'off') {
+	 if(temp == '0')
+		 res.json({ 'fulfillmentText': 'The lamp is already off' });
+	  else {
+	 	 	 callThingApiOFF().then((output) => {
     res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     res.json({ 'fulfillmentText': 'something is wrong' });
-  }); 
+  });
+ }
  }
  }
  else {
