@@ -31,7 +31,9 @@ restService.post("/webhooktest", function(req, res) {
 		temp = output;
    // res.json({ 'fulfillmentText': temp });
   });
- 
+ if (cmd == 'what'){
+	res.json({ 'fulfillmentText': 'The state of the lamp is' + temp + ''});
+ }
  if (state == 'on') {
 	if(temp == '1'){
 	res.json({ 'fulfillmentText': 'The lamp is already on' });
