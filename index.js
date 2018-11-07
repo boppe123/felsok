@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const restService = express();
 
 const host = 'api.thingspeak.com';
-
+var temp;
 restService.use(
   bodyParser.urlencoded({
     extended: true
@@ -21,7 +21,7 @@ restService.post("/webhooktest", function(req, res) {
  let Unit = req.body.queryResult.parameters['Unit']; // take out the Unit, lamp e.g.
  let state = req.body.queryResult.parameters['state']; // take out the the state, on or off
  let cmd = req.body.queryResult.parameters['cmd'];
- let temp
+ 
  if (Unit == 'lamp'){
 		callThingApi().then((output) => {
 		temp = output;
