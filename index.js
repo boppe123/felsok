@@ -29,7 +29,7 @@ restService.post("/webhooktest", function(req, res) {
  if (Unit == 'lamp'){
 	   callThingApi().then((output) => {
 		   temp = output;
-    res.json({ 'fulfillmentText': temp });
+   // res.json({ 'fulfillmentText': temp });
   });
  }
  if (state == 'on' && temp == '1') {  
