@@ -31,7 +31,7 @@ restService.post("/webhooktest", function(req, res) {
 		   temp = output;
    // res.json({ 'fulfillmentText': temp });
   });
- }
+ 
  if (state == 'on' && temp == '1') {  
 	 res.json({ 'fulfillmentText': 'The lamp is already on' });
  }
@@ -52,34 +52,7 @@ restService.post("/webhooktest", function(req, res) {
     res.json({ 'fulfillmentText': 'something is wrong' });
   }); 
  }
- 
- 
-});
-
- /*
-  if (cmd == 'turn' && Unit == 'lamp'){
-    if (state == 'on' && temp == '1') 
-         res.json({ 'fulfillmentText': 'The lights are already on' }); // If the lights are already on
-        } else {
-          turnLightON().then((output) => {
-            res.json({ 'fulfillmentText': output });
-          });
-        };
-      
-  
-    if (state == 'off') {
-      getStateOfLight().then((output) => {
-        if (output == 0) {
-         res.json({ 'fulfillmentText': 'The lights are already off' }); // If the lights are already off
-        } else {
-          turnLightOFF().then((output) => {
-            res.json({ 'fulfillmentText': output });
-          });
-   
-});
-  
-  
-
+ }
  else {
 	    returnError().then((ret) => {
     res.json({ 'fulfillmentText': ret }); // Return the results of the weather API to Dialogflow
@@ -88,13 +61,13 @@ restService.post("/webhooktest", function(req, res) {
   });
 	 
  }
+ 
 });
-	)};
-*/
+
 
 function returnError(){
     return new Promise((resolve, reject) => {
-        let ret = ' Bad code u noob ';
+        let ret = ' Something wrong with lamp code ';
         console.log(ret);
         resolve(ret);
       });
