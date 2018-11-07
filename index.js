@@ -8,6 +8,10 @@ const restService = express();
 
 const host = 'api.thingspeak.com';
 
+var Unit;
+var state;
+var cmd;
+var temp;
 restService.use(
   bodyParser.urlencoded({
     extended: true
@@ -18,33 +22,42 @@ restService.use(bodyParser.json());
 
 restService.post("/webhooktest", function(req, res) {
 
- let Unit = req.body.queryResult.parameters['Unit']; // take out the Unit, lamp e.g.
- let state = req.body.queryResult.parameters['state']; // take out the the state, on or off
- let cmd = req.body.queryResult.parameters['cmd'];
- var temp;
+ Unit = req.body.queryResult.parameters['Unit']; // take out the Unit, lamp e.g.
+ state = req.body.queryResult.parameters['state']; // take out the the state, on or off
+ cmd = req.body.queryResult.parameters['cmd'];
+ 
  if (Unit == 'lamp'){
 	   callThingApi().then((output) => {
 		   temp = output;
-    res.json({ 'fulfillmentText': temp }); // Return the results of the weather API to Dialogflow
-  }).catch(() => {
+   // res.json({ 'fulfillmentText': temp }); // Return the results of the weather API to Dialogflow
+  //}).catch(() => {
     //res.json({ 'fulfillmentText': 'something is wrong' });
   });
  }
-  if (Unit == 'lamp' && state == 'on' && temp == '1' && cmd == 'turn'){
-	let stateon = 'The lamp is already on';
-	return stateon;
-  }
+});
+
+ /*
+  if (cmd == 'turn' && Unit == 'lamp'){
+    if (state == 'on' && temp == '1') 
+         res.json({ 'fulfillmentText': 'The lights are already on' }); // If the lights are already on
+        } else {
+          turnLightON().then((output) => {
+            res.json({ 'fulfillmentText': output });
+          });
+        };
+      
   
+    if (state == 'off') {
+      getStateOfLight().then((output) => {
+        if (output == 0) {
+         res.json({ 'fulfillmentText': 'The lights are already off' }); // If the lights are already off
+        } else {
+          turnLightOFF().then((output) => {
+            res.json({ 'fulfillmentText': output });
+          });
+   
+});
   
-  
-  
-if (Unit == 'lamp' && state == 'on' && cmd == 'turn'){
-	 callThingApiON().then((output) => {
-    res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
-  }).catch(() => {
-    res.json({ 'fulfillmentText': 'something is wrong' });
-  });
- }
   
 
  else {
@@ -56,7 +69,8 @@ if (Unit == 'lamp' && state == 'on' && cmd == 'turn'){
 	 
  }
 });
-
+	)};
+*/
 
 function returnError(){
     return new Promise((resolve, reject) => {
