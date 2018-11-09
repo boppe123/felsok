@@ -44,7 +44,7 @@ restService.post("/webhooktest", function(req, res) {
  }
  if(state == 'off') {
 	if(temp == '1') {
-	myFunction().then((output) => {
+	setTimeout(function() { callThingApiON(); }, 9000).then((output) => {
     res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     res.json({ 'fulfillmentText': 'something is wrong' });
