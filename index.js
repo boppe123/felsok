@@ -129,7 +129,7 @@ function callThingApiON () {
   });
 }
 function myFunction() {
-    myVar = setTimeout(callThingApiOFF, 20000);
+    myVar = setTimeout(callThingApiOFF, 9000);
 	return output;
 }
 function callThingApiOFF () {
