@@ -64,7 +64,6 @@ restService.post("/webhooktest", function(req, res) {
  }
 
  }
- 
 });
 
 
@@ -80,7 +79,17 @@ function returnError(){
       });
     }
 
-
+function returnErrorTemp(){
+    return new Promise((resolve, reject) => {
+        let rett = ' No unit assigned to task ';
+        console.log(rett);
+        resolve(rett);
+      });
+      res.on('error', (error) => {
+        console.log('Error calling API')
+        reject();
+      });
+    }
 
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
