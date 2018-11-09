@@ -50,7 +50,7 @@ restService.post("/webhooktest", function(req, res) {
     res.json({ 'fulfillmentText': 'something is wrong' });
   });
 	}
-	else {
+	else if (temp == '0'){
 	res.json({ 'fulfillmentText': 'The lamp is already off' });
  }
  
