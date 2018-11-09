@@ -65,30 +65,6 @@ restService.post("/webhooktest", function(req, res) {
 });
 
 
-function returnError(){
-    return new Promise((resolve, reject) => {
-        let ret = ' Something wrong with lamp code ';
-        console.log(ret);
-        resolve(ret);
-      });
-      res.on('error', (error) => {
-        console.log('Error calling API')
-        reject();
-      });
-    }
-
-function returnErrorTemp(){
-    return new Promise((resolve, reject) => {
-        let rett = ' No unit assigned to task ';
-        console.log(rett);
-        resolve(rett);
-      });
-      res.on('error', (error) => {
-        console.log('Error calling API')
-        reject();
-      });
-    }
-
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
 });
