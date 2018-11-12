@@ -116,11 +116,7 @@ function callThingApiON () {
         //let response = JSON.parse(body);
         //let last = response['field1'];
         // Create response
-		
         let output = 'Turning on lamp';
-		if (output = '0'){
-			output = 'Lamp did not turn on';
-		}
         // Resolve the promise with the output text
         console.log(output);
         resolve(output);
