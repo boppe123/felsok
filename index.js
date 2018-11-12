@@ -23,8 +23,6 @@ restService.post("/webhooktest", function(req, res) {
  let cmd = req.body.queryResult.parameters['cmd'];
  
  if (Unit == 'lamp'){
-	 	lampOneOFF.then((output) => {
-  });
 		statusOne().then((output) => {
 		statone = output;
   });
@@ -35,7 +33,7 @@ restService.post("/webhooktest", function(req, res) {
  if (state == 'on') {
 	if(statone != '1'){
 	lampOneON().then((output) => {
-    res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
+    res.json({ 'fulfillmentText': output }); 
   }).catch(() => {
     res.json({ 'fulfillmentText': 'something is wrong' });
   });
@@ -48,7 +46,7 @@ res.json({ 'fulfillmentText': 'The lamp is already on' });
  if(state == 'off') {
 	if(statone == '1') {
 	lampOneOFF().then((output) => {
-    res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
+    res.json({ 'fulfillmentText': output });
   }).catch(() => {
     res.json({ 'fulfillmentText': 'something is wrong' });
   });
@@ -78,9 +76,6 @@ restService.listen(process.env.PORT || 8000, function() {
 
 function statusOne () {
     return new Promise((resolve, reject) => {
-    // Create the path for the HTTP request to get the weather
-    //let path = '/update?api_key=116UAXMQP1O8EYZ3&field1=1';
-    // Make the HTTP request
 	
     https.get('https://api.thingspeak.com/channels/592740/feeds.json?results=1', (res) => {
       let body = ''; // var to store the response chunks
@@ -108,10 +103,7 @@ function statusOne () {
 
 function lampOneON () {
     return new Promise((resolve, reject) => {
-    // Create the path for the HTTP request to get the weather
-    //let path = '/update?api_key=116UAXMQP1O8EYZ3&field1=1';
-    // Make the HTTP request
-	
+
     https.get('https://api.thingspeak.com/update?api_key=TOVVVTT2PA4I9HB5&field1=1', (res) => {
       let body = ''; // var to store the response chunks
       res.on('data', (d) => { body += d; }); // store each response chunk
