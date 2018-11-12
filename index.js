@@ -24,7 +24,7 @@ restService.post("/webhooktest", function(req, res) {
  
  if (Unit == 'lamp'){
 	 //	callThingApiOFF.then((output) => {
-  });
+ // });
 		callThingApi().then((output) => {
 		temp = output;
   });
