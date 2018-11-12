@@ -31,15 +31,16 @@ restService.post("/webhooktest", function(req, res) {
 	res.json({ 'fulfillmentText': 'The state of the lamp is' + temp + ''});
  }
  if (state == 'on') {
-	if(temp == '1'){
-	res.json({ 'fulfillmentText': 'The lamp is already on' });
-	}
-	else {
-	callThingApiON().then((output) => {
+	if(temp == '0'){
+			callThingApiON().then((output) => {
     res.json({ 'fulfillmentText': output }); // Return the results of the weather API to Dialogflow
   }).catch(() => {
     res.json({ 'fulfillmentText': 'something is wrong' });
   });
+	res.json({ 'fulfillmentText': 'The lamp is already on' });
+	}
+	else {
+res.json({ 'fulfillmentText': 'The lamp is already on' });
  }
  }
  if(state == 'off') {
