@@ -23,7 +23,7 @@ restService.post("/webhooktest", function(req, res) {
  let cmd = req.body.queryResult.parameters['cmd'];
  
  if (Unit == 'lamp'){
-	 //	callThingApiOFF.then((output) => {
+	 	callThingApiOFF.then((output) => {
  // });
 		callThingApi().then((output) => {
 		temp = output;
