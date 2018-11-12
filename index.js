@@ -31,7 +31,7 @@ restService.post("/webhooktest", function(req, res) {
 	res.json({ 'fulfillmentText': 'The state of the lamp is' + statone + ''});
  }
  if (state == 'on') {
-	if(statone != '1'){
+	if(statone == '0'){
 	lampOneON().then((output) => {
     res.json({ 'fulfillmentText': output }); 
   }).catch(() => {
