@@ -53,15 +53,16 @@ restService.post("/webhooktest", function(req, res) {
 	else if (temp == '0'){
 	res.json({ 'fulfillmentText': 'The lamp is already off' });
  }
- 
+ }
   	else {
 
     res.json({ 'fulfillmentText': 'something is wrong with lamp code' });
  
-	}
+	
 
  }
  }
+ 
 });
 
 
@@ -115,6 +116,7 @@ function callThingApiON () {
         //let response = JSON.parse(body);
         //let last = response['field1'];
         // Create response
+		
         let output = 'The lamp is now on';
 
         // Resolve the promise with the output text
