@@ -25,8 +25,11 @@ restService.post("/webhooktest", function(req, res) {
  if (Unit == 'lamp'){
 		callThingApi().then((output) => {
 		temp = output;
+	callThingApiOFF.then((output) => {
    // res.json({ 'fulfillmentText': temp });
   });
+  });
+
  if (cmd == 'what'){
 	res.json({ 'fulfillmentText': 'The state of the lamp is' + temp + ''});
  }
