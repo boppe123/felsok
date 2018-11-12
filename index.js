@@ -118,7 +118,9 @@ function callThingApiON () {
         // Create response
 		
         let output = 'Turning on lamp';
-
+		if (output != 1){
+			output = 'Lamp did not turn on';
+		}
         // Resolve the promise with the output text
         console.log(output);
         resolve(output);
