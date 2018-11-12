@@ -117,7 +117,7 @@ function callThingApiON () {
         //let last = response['field1'];
         // Create response
 		
-        let output = 'The lamp is now on';
+        let output = 'Turning on lamp';
 
         // Resolve the promise with the output text
         console.log(output);
@@ -146,7 +146,10 @@ function callThingApiOFF () {
         //let response = JSON.parse(body);
         //let last = response['field1'];
         // Create response
-        let output = 'The lamp is now off';
+        let output = 'Turning off lamp';
+		if (output != 0){
+			output = 'Lamp did not turn off';
+		}
 
         // Resolve the promise with the output text
         console.log(output);
