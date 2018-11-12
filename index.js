@@ -37,6 +37,7 @@ restService.post("/webhooktest", function(req, res) {
   }).catch(() => {
     res.json({ 'fulfillmentText': 'something is wrong' });
   });
+	}
 	else {
 res.json({ 'fulfillmentText': 'The lamp is already on' });
  }
