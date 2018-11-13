@@ -94,11 +94,12 @@ function lampOneON () {
       res.on('data', (d) => { body += d; }); 
       res.on('end', () => {
         let response = JSON.parse(body);
-        if (response == '0') {
-        let	output = 'Something is wrong, try later';
+        let output = response.feeds[0].field1;
+        if (output == '0') {
+      		output = 'Something is wrong, try later';
         }
         	else {
-        	let	output ='The lamp is now on';
+			output ='The lamp is now on';
         	}
         	
         
