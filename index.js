@@ -95,9 +95,6 @@ function lampOneON () {
       res.on('data', (d) => { body += d; }); 
       res.on('end', () => {
         let output = 'Turning on lamp';
-		if (output != 1){
-			output = 'Lamp did not turn on';
-		}
         console.log(output);
         resolve(output);
       });
@@ -118,9 +115,6 @@ function lampOneOFF () {
       res.on('end', () => {
 
         let output = 'Turning off lamp';
-		if (output != 0){
-			output = 'Lamp did not turn off';
-		}
 
         console.log(output);
         resolve(output);
