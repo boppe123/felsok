@@ -93,7 +93,7 @@ function lampOneON () {
       let body = ''; 
       res.on('data', (d) => { body += d; }); 
       res.on('end', () => {
-      	if (body = 0){
+      	if (body == '0'){
       	let output = 'Lamp did not turn on';
       	}
       	else {
