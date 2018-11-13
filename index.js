@@ -74,8 +74,7 @@ function statusOne () {
       res.on('data', (d) => { body += d; }); 
       res.on('end', () => {
         let response = JSON.parse(body);
-        let statone = response.feeds[0].field1;
-        let output = statone;
+        let output = response.feeds[0].field1;
         console.log(output);
         resolve(output);
       });
