@@ -95,10 +95,10 @@ function lampOneON () {
       res.on('end', () => {
         let response = JSON.parse(body);
         if (response == '0') {
-        	output = 'Something is wrong, try later';
+        let	output = 'Something is wrong, try later';
         }
         	else {
-        		output ='The lamp is now on';
+        	let	output ='The lamp is now on';
         	}
         	
         
