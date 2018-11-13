@@ -93,11 +93,13 @@ function lampOneON () {
       let body = ''; 
       res.on('data', (d) => { body += d; }); 
       res.on('end', () => {
-      	if (body == '0'){
-      	let output = 'Lamp did not turn on';
+      	let response = JSON.parse(body);
+      	let output;
+      	if (response == '0'){
+      	output = 'Lamp did not turn on';
       	}
       	else {
-        let output = 'Turning on lamp';
+        output = 'Turning on lamp';
 		}
         console.log(output);
         resolve(output);
