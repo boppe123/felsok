@@ -96,10 +96,12 @@ function lampOneON () {
         let response = JSON.parse(body);
         if (response == 0) {
         	output = 'Something is wrong, try later';
+        }
         	else {
         		output ='The lamp is now on';
         	}
-        }
+        	
+        
         console.log(output);
         resolve(output);
       });
