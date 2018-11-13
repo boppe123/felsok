@@ -5,7 +5,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const restService = express();
 const host = 'api.thingspeak.com';
-var statone;
+var statone = 0;
 restService.use(
   bodyParser.urlencoded({
     extended: true
