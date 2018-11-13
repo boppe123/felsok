@@ -120,7 +120,14 @@ function lampOneOFF () {
       res.on('data', (d) => { body += d; });
       res.on('end', () => {
 
-        let output = 'Turning off lamp';
+      	let response = JSON.parse(body);
+      	let output;
+      	if (response == '0'){
+      	output = 'Lamp did not turn off';
+      	}
+      	else {
+        output = 'Turning off lamp';
+		}
 
         console.log(output);
         resolve(output);
