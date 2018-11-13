@@ -3,9 +3,7 @@
 const https = require('https');
 const express = require("express");
 const bodyParser = require("body-parser");
-
 const restService = express();
-
 const host = 'api.thingspeak.com';
 var statone;
 restService.use(
@@ -38,9 +36,11 @@ restService.post("/webhooktest", function(req, res) {
     res.json({ 'fulfillmentText': 'something is wrong' });
   });
 	}
-	else //if(statone == '1') 
-	{
+	else if(statone == '1') {
 res.json({ 'fulfillmentText': 'The lamp is already on' });
+ }
+   	else {
+    res.json({ 'fulfillmentText': 'something is wrong with lamp code' });
  }
  }
  if(state == 'off') {
@@ -51,43 +51,31 @@ res.json({ 'fulfillmentText': 'The lamp is already on' });
     res.json({ 'fulfillmentText': 'something is wrong' });
   });
 	}
-	else //if (statone == '0')
-	{
+	else if (statone == '0') {
 	res.json({ 'fulfillmentText': 'The lamp is already off' });
  }
- }
-  	else {
-
+   	else {
     res.json({ 'fulfillmentText': 'something is wrong with lamp code' });
- 
-	
-
+ }
  }
  }
  
 });
-
 
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
 });
 
-
-
 function statusOne () {
     return new Promise((resolve, reject) => {
 	
     https.get('https://api.thingspeak.com/channels/592740/feeds.json?results=1', (res) => {
-      let body = ''; // var to store the response chunks
-      res.on('data', (d) => { body += d; }); // store each response chunk
+      let body = ''; 
+      res.on('data', (d) => { body += d; }); 
       res.on('end', () => {
-        // After all the data has been received parse the JSON for desired data
         let response = JSON.parse(body);
         let statone = response.feeds[0].field1;
-        // Create response
         let output = statone;
-
-        // Resolve the promise with the output text
         console.log(output);
         resolve(output);
       });
@@ -98,25 +86,18 @@ function statusOne () {
     });
   });
 }
-
-
 
 function lampOneON () {
     return new Promise((resolve, reject) => {
 
     https.get('https://api.thingspeak.com/update?api_key=TOVVVTT2PA4I9HB5&field1=1', (res) => {
-      let body = ''; // var to store the response chunks
-      res.on('data', (d) => { body += d; }); // store each response chunk
+      let body = ''; 
+      res.on('data', (d) => { body += d; }); 
       res.on('end', () => {
-        // After all the data has been received parse the JSON for desired data
-        //let response = JSON.parse(body);
-        //let last = response['field1'];
-        // Create response
         let output = 'Turning on lamp';
-		if (output != '1'){
+		if (output != 1){
 			output = 'Lamp did not turn on';
 		}
-        // Resolve the promise with the output text
         console.log(output);
         resolve(output);
       });
@@ -128,13 +109,12 @@ function lampOneON () {
   });
 }
 
-
 function lampOneOFF () {
     return new Promise((resolve, reject) => {
 	
     https.get('https://api.thingspeak.com/update?api_key=TOVVVTT2PA4I9HB5&field1=0', (res) => {
-      let body = ''; // var to store the response chunks
-      res.on('data', (d) => { body += d; }); // store each response chunk
+      let body = '';
+      res.on('data', (d) => { body += d; });
       res.on('end', () => {
 
         let output = 'Turning off lamp';
@@ -152,5 +132,4 @@ function lampOneOFF () {
     });
   });
 }
-
 
