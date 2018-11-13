@@ -95,7 +95,7 @@ function lampOneON () {
       res.on('end', () => {
         let response = JSON.parse(body);
         let output = response.feeds[0].field1;
-        if (output == '0') {
+        if (response == 0) {
       		output = 'Something is wrong, try later';
         }
         	else {
